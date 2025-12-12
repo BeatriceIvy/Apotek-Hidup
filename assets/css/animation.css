@@ -1,0 +1,52 @@
+/* ===== ANIMASI DASAR APOTEK HIDUP ===== */
+
+/* Fade In Umum */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide Up (Produk & Card) */
+.slide-up {
+  animation: slideUp 0.6s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover Tombol */
+.btn-anim {
+  transition: 0.3s ease;
+}
+
+.btn-anim:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Card Produk */
+.product-card {
+  transition: 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Modal Slide (Keranjang) */
+.cart-modal {
+  transition: 0.4s ease;
+}

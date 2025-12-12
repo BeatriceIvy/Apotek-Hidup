@@ -1,0 +1,180 @@
+:root {
+  --primary: #2a9d8f;
+  --secondary: #264653;
+  --accent: hsl(43, 74%, 66%);
+  --danger: #e63946;
+  --light: #f7f7f7;
+  --dark: #212529;
+  --gray: #6c757d;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+*, html, body {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--light);
+  color: var(--dark);
+}
+
+.admin-container {
+  padding: 2rem;
+}
+
+/* ===== JUDUL ===== */
+.admin-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.admin-title h2 {
+  color: var(--secondary);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: var(--secondary);
+}
+
+.samping {
+    margin-left: 850px;
+}
+
+/* ===== TABLE ===== */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.admin-table th {
+  background: var(--secondary);
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+.admin-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-table tr:hover {
+  background: #f2f2f2;
+}
+
+.admin-table img {
+  width: 55px;
+  border-radius: 5px;
+}
+
+/* ===== BUTTON ===== */
+.btn-edit {
+  background: var(--accent);
+  color: black;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn-hapus {
+  background: var(--danger);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* ===== FORM ===== */
+.form-card {
+  max-width: 600px;
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: auto;
+}
+
+.form-card h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  padding: 12px;
+  border-radius: var(--radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.form-submit:hover {
+  background: var(--secondary);
+}
+
+.back-btn {
+  width: 100%;
+  background: var(--danger);
+  color: var(--light);
+  padding: 12px;
+  border-radius: var(--radius);
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.back-btn:hover {
+  background-color: var(--secondary);
+}
