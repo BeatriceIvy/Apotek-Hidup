@@ -98,13 +98,6 @@ if ($search != "") {
 
         <div class="product-grid">
 
-            <?php if ($data_produk->num_rows === 0): ?>
-                <p style="text-align:center; font-size:1.2rem; color:red; margin:1rem 0;">
-                    Item tidak tersedia
-                </p>
-            <?php endif; ?>
-
-
             <?php while ($row = $data_produk->fetch_assoc()): ?>
                 <div class="product-card slide-up">
 

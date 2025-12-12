@@ -91,7 +91,7 @@
         <form action="../auth/contact_process.php" method="POST">
           <input type="text" name="nama" placeholder="Nama Lengkap" required>
           <input type="email" name="email" placeholder="Email" required>
-          <input type="text" name="no_hp" placeholder="Nomor HP" required>
+          <input type="number" name="no_hp" placeholder="Nomor HP" required>
           <input type="text" name="subjek" placeholder="Subjek" required>
           <textarea name="pesan" rows="5" placeholder="Tulis pesanmu di sini..." required></textarea>
           <button type="submit" class="btn-primary">Kirim Pesan</button>
