@@ -31,25 +31,27 @@
       </ul>
     </nav>
     <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <div class="user-actions">
-      <div class="search-container">
+      <form action="produk.php" method="GET" class="search-container">
         <input type="text" class="search-input" placeholder="Cari obat...">
         <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </div>
+      </form>
       <div class="profile-dropdown">
         <button class="profile-btn"><i class="fa-solid fa-circle-user"></i></button>
         <div class="dropdown-content">
           <a href="login.php" class="login-link">Login</a>
           <a href="signup.php">Daftar</a>
           <a href="profile.php">Profil Saya</a>
+          <!-- <a href="../auth/logout.php">Logout</a> -->
         </div>
       </div>
-      <button class="cart-btn"><i class="fas fa-shopping-cart"></i>
-        <span class="cart-count">0</span></button>
+    </div>
+    <button class="cart-btn"><i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">0</span></button>
     </div>
   </header>
   <!-- NAVBAR -->
@@ -61,18 +63,18 @@
         <h2>Buat Akun Baru</h2>
         <form id="registerForm" class="auth-form" action="../auth/signup_process.php" method="POST">
           <div class="form-group">
-            <label for="reg-name">Username</label>
-            <input type="text" id="reg-name" name="name" required>
+            <label for="nama">Username</label>
+            <input type="text" id="nama" name="nama" placeholder="Username" required>
             <i class="fas fa-user icon"></i>
           </div>
           <div class="form-group">
-            <label for="reg-email">Email</label>
-            <input type="email" id="reg-email" name="email" required>
+            <label for="email">Email</label>
+            <input type="email" id="reg-email" name="email" placeholder="Email" required>
             <i class="fas fa-envelope icon"></i>
           </div>
           <div class="form-group">
             <label for="reg-password">Password</label>
-            <input type="password" id="reg-password" name="password" required minlength="8">
+            <input type="password" id="password" name="password" required minlength="8" placeholder="Password">
             <i class="fas fa-lock icon"></i>
             <button type="button" class="toggle-password"><i class="fas fa-eye icons"></i></button>
           </div>
@@ -99,7 +101,7 @@
       </div>
       <div class="cart-total">
         <p>Total: <span class="total-price">Rp 0</span></p>
-        <button class="checkout-btn">Checkout</button>
+        <button class="checkout-btn" onclick="location.href = 'checkout.php'">Checkout</button>
       </div>
     </div>
   </div>
@@ -137,7 +139,7 @@
     </div>
   </footer>
   <!-- FOOTER -->
-   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 </body>
 
 </html>

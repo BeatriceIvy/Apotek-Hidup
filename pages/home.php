@@ -2,9 +2,25 @@
 session_start();
 include "../config/database.php";
 
-$data_produk = $conn->query("SELECT * FROM obat ORDER BY id_obat DESC");
-?>
+$cart = $_SESSION['cart'] ?? [];
+// $data_produk = $conn->query("SELECT * FROM obat ORDER BY id_obat DESC");
+$bestSeller = $conn->query("
+    SELECT 
+        o.id_obat,
+        o.nama_obat,
+        o.harga,
+        o.gambar,
+        SUM(td.qty) AS total_terjual
+    FROM detail_transaksi td
+    JOIN obat o ON td.id_obat = o.id_obat
+    JOIN transaksi t ON td.id_transaksi = t.id_transaksi
+    WHERE t.status IN ('diproses','selesai')
+    GROUP BY o.id_obat
+    ORDER BY total_terjual DESC
+    LIMIT 6
+");
 
+?>
 
 <!DOCTYPE html>
 <html lang="id">
@@ -45,16 +61,19 @@ $data_produk = $conn->query("SELECT * FROM obat ORDER BY id_obat DESC");
         </div>
 
         <div class="user-actions">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Cari obat...">
-                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+            <form action="produk.php" method="GET" class="search-container">
+                <input type="text" name="q" class="search-input" placeholder="Cari obat..." required>
+                <button type="submit" class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
             <div class="profile-dropdown">
                 <button class="profile-btn"><i class="fa-solid fa-circle-user"></i></button>
                 <div class="dropdown-content">
                     <a href="login.php" class="login-link">Login</a>
                     <a href="signup.php">Daftar</a>
                     <a href="profile.php">Profil Saya</a>
+                    <!-- <a href="../auth/logout.php">Logout</a> -->
                 </div>
             </div>
             <button class="cart-btn"><i class="fas fa-shopping-cart"></i>
@@ -81,39 +100,51 @@ $data_produk = $conn->query("SELECT * FROM obat ORDER BY id_obat DESC");
                 <button class="close-cart">&times;</button>
             </div>
             <div class="cart-items">
-                <p class="empty-cart-messages">Keranjang belanja kosong</p>
+                <p class="empty-cart-message">Keranjang belanja kosong</p>
             </div>
             <div class="cart-total">
                 <p>Total : <span class="total-price">Rp 0</span></p>
-                <button class="checkout-button" onclick="location.href = 'checkout.html'">Checkout</button>
+                <button class="checkout-btn" onclick="location.href = 'checkout.php'">Checkout</button>
             </div>
         </div>
     </div>
     <!-- KERANJANG -->
 
-    <!-- PRODUK -->
-    <section class="featured-products">
-        <h2 class="section-title">Produk Kami</h2>
+    <!-- BEST SELLER -->
+    <section class="best-seller">
+        <h2 class="section-title">🔥 Produk Terlaris</h2>
+
         <div class="product-grid">
-            <?php while ($row = $data_produk->fetch_assoc()): ?>
-                <div class="product-card slide-up">
+            <?php if ($bestSeller->num_rows > 0): ?>
+                <?php while ($row = $bestSeller->fetch_assoc()): ?>
+                    <div class="product-card slide-up">
+                        <img class="produk-img" src="../assets/image/<?= $row['gambar'] ?>" alt="<?= $row['nama_obat'] ?>">
 
-                    <img class="produk-img" src="../assets/image/<?= $row['gambar']; ?>" alt="<?= $row['nama_obat']; ?>">
+                        <div class="product-info">
+                            <h4><?= $row['nama_obat'] ?></h4>
 
-                    <div class="product-info">
-                        <h3><?= $row['nama_obat']; ?></h3>
-                        <p class="price">Rp <?= number_format($row['harga'], 0, ',', '.'); ?></p>
-                        <p class="stok">Stok: <?= $row['stok']; ?></p>
-                        <button class="add-to-cart btn-anim" data-id="<?= $row['id_obat']; ?>"
-                            data-nama="<?= $row['nama_obat']; ?>" data-harga="<?= $row['harga']; ?>">
-                            Tambah ke Keranjang
-                        </button>
+                            <p class="price">
+                                Rp <?= number_format($row['harga'], 0, ',', '.') ?>
+                            </p>
+
+                            <small>Terjual: <?= $row['total_terjual'] ?></small>
+
+                            <button class="add-to-cart btn-anim" data-id="<?= $row['id_obat'] ?>" data-nama="<?= $row['nama_obat'] ?>"
+                                data-harga="<?= $row['harga'] ?>">
+                                Tambah ke Keranjang
+                            </button>
+                        </div>
                     </div>
-                </div>
-            <?php endwhile; ?>
+                <?php endwhile; ?>
+
+            <?php else: ?>
+                <p>Belum ada produk terlaris.</p>
+            <?php endif; ?>
         </div>
     </section>
-    <!-- PRODUK -->
+
+    <!-- BEST SELLER -->
+
 
     <!-- FOOTER -->
     <footer class="store-footer">
@@ -148,6 +179,8 @@ $data_produk = $conn->query("SELECT * FROM obat ORDER BY id_obat DESC");
     </footer>
     <!-- FOOTER -->
     <script src="../assets/js/main.js"></script>
+
+
 </body>
 
 </html>

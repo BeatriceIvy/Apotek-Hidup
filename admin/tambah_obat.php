@@ -54,7 +54,7 @@
       </div>
 
       <button class="form-submit">Simpan</button>
-      <a href="../auth/back.php"></a><button class="back-btn">Kembali</button></a>
+      <a href="data_obat.php"></a><button class="back-btn">Kembali</button></a>
     </form>
   </div>
 </div>

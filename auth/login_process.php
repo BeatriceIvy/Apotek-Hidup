@@ -21,6 +21,7 @@ if ($user) {
         $_SESSION['nama'] = $user['nama'];
         $_SESSION['email']    = $user['email'];
         $_SESSION['role']     = $user['role']; // 🔥 PENTING
+        $_SESSION['id_user'] = $user['id'];
 
         // 🔥 AUTO BEDAKAN ADMIN & USER
         if ($user['role'] == 'admin') {
@@ -38,4 +39,14 @@ if ($user) {
     header("Location: ../pages/login.php?error=notfound");
     exit;
 }
+
+// cek redirect
+if (isset($_SESSION['redirect_after_login'])) {
+    $redirect = $_SESSION['redirect_after_login'];
+    unset($_SESSION['redirect_after_login']);
+    header("Location: $redirect");
+} else {
+    header("Location: checkout.php");
+}
+exit;
 ?>

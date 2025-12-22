@@ -31,25 +31,27 @@
       </ul>
     </nav>
     <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <div class="user-actions">
-      <div class="search-container">
+      <form action="produk.php" method="GET" class="search-container">
         <input type="text" class="search-input" placeholder="Cari obat...">
         <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </div>
+      </form>
       <div class="profile-dropdown">
         <button class="profile-btn"><i class="fa-solid fa-circle-user"></i></button>
         <div class="dropdown-content">
           <a href="login.php" class="login-link">Login</a>
           <a href="signup.php">Daftar</a>
           <a href="profile.php">Profil Saya</a>
+          <!-- <a href="../auth/logout.php">Logout</a> -->
         </div>
       </div>
-      <button class="cart-btn"><i class="fas fa-shopping-cart"></i>
-        <span class="cart-count">0</span></button>
+    </div>
+    <button class="cart-btn"><i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">0</span></button>
     </div>
   </header>
   <!-- NAVBAR -->
@@ -80,10 +82,7 @@
             <button type="button" class="toggle-password"><i class="fas fa-eye icons"></i></button>
           </div>
           <div class="form-options">
-            <label class="remember-me">
-              <input type="checkbox" name="remember"> Ingat Saya
-            </label>
-            <a href="#" class="forgot-password">Lupa Password?</a>
+            <a href="lupa_password.php" class="forgot-password">Lupa Password?</a>
           </div>
           <button type="submit" class="login-submit">Masuk</button>
           <div class="register-link">
@@ -103,16 +102,15 @@
         <button class="close-cart">&times;</button>
       </div>
       <div class="cart-items">
-        <!-- Items will be added here dynamically -->
         <p class="empty-cart-message">Keranjang belanja kosong</p>
       </div>
       <div class="cart-total">
-        <p>Total: <span class="total-price">Rp 0</span></p>
-        <button class="checkout-btn">Checkout</button>
+        <p>Total : <span class="total-price">Rp 0</span></p>
+        <button class="checkout-btn" onclick="location.href = 'checkout.php'">Checkout</button>
       </div>
     </div>
   </div>
-  <!-- Shopping Cart Modal end -->
+  <!-- KERANJANG -->
 
   <!-- FOOTER -->
   <footer class="store-footer">

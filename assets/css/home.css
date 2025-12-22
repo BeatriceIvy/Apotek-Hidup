@@ -239,6 +239,8 @@ button {
   height: 100%;
 }
 
+
+
 .cart-header {
   display: flex;
   justify-content: space-between;
@@ -278,6 +280,42 @@ button {
   border-top: 1px solid #eee;
   text-align: right;
 }
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 8px 0;
+}
+
+.qty-btn,
+.remove-btn {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.qty-btn.minus {
+    background: #e76f51;
+}
+
+.qty-btn.plus {
+    background: #2a9d8f;
+}
+
+.remove-btn {
+    background: var(--danger-color);
+}
+
+.qty {
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
 
 .total-price {
   font-weight: bold;
@@ -372,7 +410,7 @@ button {
   color: var(--secondary-color);
 }
 
-.featured-products {
+.best-seller {
   padding: 3rem 0;
 }
 

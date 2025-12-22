@@ -1,0 +1,198 @@
+:root {
+    --primary: #2a9d8f;      /* الأخضر الأساسي */
+    --secondary:  #2a9d8f;   /* الأزرق الغامق */
+    --light: #f4f6f8;
+    --dark: #1e293b;
+    --gray: #64748b;
+    --secondary-color: #264653;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light);
+}
+
+/* ===== LAYOUT ===== */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 240px;
+    background: var(--secondary);
+    color: white;
+    padding: 30px 0;
+    position: fixed;
+    height: 100%;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 15px 30px;
+    color: rgba(255,255,255,.8);
+    text-decoration: none;
+}
+
+.sidebar ul li a.active,
+.sidebar ul li a:hover {
+    background: rgba(255,255,255,.15);
+    color: #fff;
+}
+
+/* ===== MAIN ===== */
+.main-content {
+    padding: 30px;
+    width: 100%;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.topbar h1 {
+    font-size: 30px;
+    color: var(--dark);
+}
+
+.topbar p {
+    color: var(--gray);
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.samping {
+    margin-left: 650px;
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-download {
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ===== FILTER ===== */
+.filter-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.08);
+}
+
+.date-inputs {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.date-inputs input {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.btn-filter {
+    background: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ===== STATISTIC ===== */
+.statistik-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--primary);
+}
+
+.stat-card h4 {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.stat-card p {
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* COLORS */
+.green::after { background: #2ecc71; }
+.blue::after { background: #3498db; }
+.orange::after { background: #f39c12; }
+.purple::after { background: #9b59b6; }
+
+/* ===== PRINT ===== */
+@media print {
+    .sidebar,
+    .btn-download,
+    .filter-box {
+        display: none;
+    }
+
+    .main-content {
+        margin: 0;
+    }
+}

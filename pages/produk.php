@@ -4,12 +4,17 @@ include "../config/database.php";
 
 $data_produk = $conn->query("SELECT * FROM obat ORDER BY id_obat DESC");
 
-$search = isset($_GET['search']) ? $_GET['search'] : '';
+$keyword = $_GET['q'] ?? '';
 
-if ($search != "") {
-    $stmt = $conn->prepare("SELECT * FROM obat WHERE nama_obat LIKE ?");
-    $keyword = "%$search%";
-    $stmt->bind_param("s", $keyword);
+if ($keyword) {
+    $stmt = $conn->prepare("
+        SELECT * FROM obat 
+        WHERE nama_obat LIKE ? 
+        OR kategori LIKE ?
+        ORDER BY id_obat DESC
+    ");
+    $like = "%$keyword%";
+    $stmt->bind_param("ss", $like, $like);
     $stmt->execute();
     $data_produk = $stmt->get_result();
 } else {
@@ -56,16 +61,19 @@ if ($search != "") {
             <span></span>
         </div>
         <div class="user-actions">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Cari obat...">
-                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+            <form action="produk.php" method="GET" class="search-container">
+                <input type="text" name="q" class="search-input" placeholder="Cari obat..." required>
+                <button type="submit" class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
             <div class="profile-dropdown">
                 <button class="profile-btn"><i class="fa-solid fa-circle-user"></i></button>
                 <div class="dropdown-content">
                     <a href="login.php" class="login-link">Login</a>
                     <a href="signup.php">Daftar</a>
                     <a href="profile.php">Profil Saya</a>
+                    <!-- <a href="../auth/logout.php">Logout</a> -->
                 </div>
             </div>
             <button class="cart-btn"><i class="fas fa-shopping-cart"></i>
@@ -82,11 +90,11 @@ if ($search != "") {
                 <button class="close-cart">&times;</button>
             </div>
             <div class="cart-items">
-                <p class="empty-cart-messages">Keranjang belanja kosong</p>
+                <p class="empty-cart-message">Keranjang belanja kosong</p>
             </div>
             <div class="cart-total">
                 <p>Total : <span class="total-price">Rp 0</span></p>
-                <button class="checkout-button" onclick="location.href = 'checkout.html'">Checkout</button>
+                <button class="checkout-btn" onclick="location.href = 'checkout.php'">Checkout</button>
             </div>
         </div>
     </div>
@@ -94,6 +102,11 @@ if ($search != "") {
 
     <!-- PRODUK -->
     <section class="featured-products">
+        <?php if ($data_produk->num_rows === 0): ?>
+            <h1 style="text-align:center; margin-top:30px;">
+                ❌ Produk tidak tersedia
+            </h1>
+        <?php endif; ?>
         <h2 class="section-title">Semua Produk</h2>
 
         <div class="product-grid">

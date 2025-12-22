@@ -1,0 +1,135 @@
+:root {
+    --primary-color: #2a9d8f;
+    --secondary-color: #264653;
+    --accent-color: #e9c46a;
+    --danger-color: #e63946;
+    --light-color: #f7f7f7;
+    --dark-color: #212529;
+    --gray-color: #6c757d;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-title {
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+}
+
+.transaction-summary {
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.transaction-summary p {
+    margin: 5px 0;
+}
+
+.status {
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: var(--border-radius);
+    color: #fff;
+}
+
+.status.diproses {
+    background-color: var(--primary-color);
+}
+
+.status.selesai {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+}
+
+.status.dibatalkan {
+    background-color: var(--danger-color);
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+}
+
+.transaction-table th, .transaction-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.transaction-table thead {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.transaction-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.transaction-table tfoot {
+    background-color: var(--light-color);
+    font-weight: 600;
+}
+
+.total-label {
+    text-align: right;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.actions .btn-back {
+    padding: 10px 20px;
+    background-color: var(--gray-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.actions .btn-back:hover {
+    background-color: var(--dark-color);
+}
+
+@media (max-width: 576px) {
+    .transaction-summary {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .transaction-table th, .transaction-table td {
+        font-size: 13px;
+        padding: 8px;
+    }
+}

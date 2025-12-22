@@ -27,7 +27,7 @@
             <ul>
                 <li><a href="home.php">Beranda</a></li>
                 <li><a href="produk.php">Produk</a></li>
-                <li><a href="kontak.php">Hubungi Kami</a></li>
+                <li><a href="#">Hubungi Kami</a></li>
             </ul>
         </nav>
         <div class="hamburger">
@@ -36,16 +36,19 @@
             <span></span>
         </div>
         <div class="user-actions">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Cari obat...">
-                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
+            <form action="produk.php" method="GET" class="search-container">
+                <input type="text" name="q" class="search-input" placeholder="Cari obat..." required>
+                <button type="submit" class="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
             <div class="profile-dropdown">
                 <button class="profile-btn"><i class="fa-solid fa-circle-user"></i></button>
                 <div class="dropdown-content">
                     <a href="login.php" class="login-link">Login</a>
                     <a href="signup.php">Daftar</a>
                     <a href="profile.php">Profil Saya</a>
+                    <!-- <a href="../auth/logout.php">Logout</a> -->
                 </div>
             </div>
             <button class="cart-btn"><i class="fas fa-shopping-cart"></i>
@@ -66,7 +69,7 @@
             </div>
             <div class="cart-total">
                 <p>Total : <span class="total-price">Rp 0</span></p>
-                <button class="checkout-button" onclick="location.href = 'checkout.html'">Checkout</button>
+                <button class="checkout-btn" onclick="location.href = 'checkout.php'">Checkout</button>
             </div>
         </div>
     </div>
@@ -82,33 +85,33 @@
     <!-- HERO -->
 
     <!-- CONTACT CONTENT -->
-  <section class="contact-section">
-    <div class="container contact-grid fade-in slide-up">
-      
-      <!-- Form Kontak -->
-      <div class="contact-form">
-        <h3>Kirim Pesan</h3>
-        <form action="../auth/contact_process.php" method="POST">
-          <input type="text" name="nama" placeholder="Nama Lengkap" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="number" name="no_hp" placeholder="Nomor HP" required>
-          <input type="text" name="subjek" placeholder="Subjek" required>
-          <textarea name="pesan" rows="5" placeholder="Tulis pesanmu di sini..." required></textarea>
-          <button type="submit" class="btn-primary">Kirim Pesan</button>
-        </form>
-      </div>
+    <section class="contact-section">
+        <div class="container contact-grid fade-in slide-up">
 
-      <!-- Info Kontak -->
-      <div class="contact-info">
-        <h3>Informasi Kontak</h3>
-        <p><strong>Alamat:</strong><br> Fakultas Dakwah, UIN Salatiga, Jawa Tengah</p>
-        <p><strong>Email:</strong><br> apotekhidup@gmail.com</p>
-        <p><strong>Instagram:</strong><br> <a href="#" target="_blank">@ApotekHidup</a></p>
-        <p><strong>YouTube:</strong><br> <a href="#" target="_blank">APOTEK HIDUP OFFICIAL</a></p>
-      </div>
+            <!-- Form Kontak -->
+            <div class="contact-form">
+                <h3>Kirim Pesan</h3>
+                <form action="../auth/contact_process.php" method="POST">
+                    <input type="text" name="nama" placeholder="Nama Lengkap" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="number" name="no_hp" placeholder="Nomor HP" required>
+                    <input type="text" name="subjek" placeholder="Subjek" required>
+                    <textarea name="pesan" rows="5" placeholder="Tulis pesanmu di sini..." required></textarea>
+                    <button type="submit" class="btn-primary">Kirim Pesan</button>
+                </form>
+            </div>
 
-    </div>
-  </section>
+            <!-- Info Kontak -->
+            <div class="contact-info">
+                <h3>Informasi Kontak</h3>
+                <p><strong>Alamat:</strong><br> Fakultas Dakwah, UIN Salatiga, Jawa Tengah</p>
+                <p><strong>Email:</strong><br> apotekhidup@gmail.com</p>
+                <p><strong>Instagram:</strong><br> <a href="#" target="_blank">@ApotekHidup</a></p>
+                <p><strong>YouTube:</strong><br> <a href="#" target="_blank">APOTEK HIDUP OFFICIAL</a></p>
+            </div>
+
+        </div>
+    </section>
 
 
     <!-- FOOTER -->
